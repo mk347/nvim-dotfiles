@@ -1,9 +1,9 @@
 local opt = vim.opt
 
 -- Tab / Indentation
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
+opt.tabstop = 5
+opt.shiftwidth = 5
+opt.softtabstop = 5
 opt.expandtab = true
 opt.smartindent = true
 opt.autoindent = true
@@ -26,13 +26,13 @@ opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
 opt.cursorline = true
 opt.fillchars = {
-	foldopen = "",
-	foldclose = "",
-	-- fold = "⸱",
-	fold = " ",
-	foldsep = " ",
-	diff = "╱",
-	eob = " ",
+  foldopen = "",
+  foldclose = "",
+  -- fold = "⸱",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
 }
 
 -- Behaviour

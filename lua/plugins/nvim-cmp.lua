@@ -2,25 +2,32 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path", -- source for file system paths
-    "L3MON4D3/LuaSnip", -- snippet engine
+    "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+
+    "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
+    "dsznajder/vscode-es7-javascript-react-snippets",
+
     "onsails/lspkind.nvim", -- vs-code like pictograms
   },
   config = function()
     local cmp = require("cmp")
-
     local luasnip = require("luasnip")
-
     local lspkind = require("lspkind")
 
-    -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-    require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/luasnippets/snippets.lua" })
-
+    -- loads all snippets, important
     luasnip.config.setup({
       require("luasnippets.snippets"),
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/luasnippets/snippets.lua" }),
+      -- Load snippets from vscode
+      require("luasnip.loaders.from_vscode").load({
+        include = { "javascript", "javascriptreact", "html", "css", "scss" },
+      }),
     })
 
     cmp.setup({
@@ -40,6 +47,14 @@ return {
         ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
+
+        vim.keymap.set({ "i", "s" }, "<leader>g", function()
+          if luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<leader>g", true, false, true), "n", false)
+          end
+        end, { silent = true }),
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
