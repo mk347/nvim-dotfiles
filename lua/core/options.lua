@@ -1,9 +1,9 @@
 local opt = vim.opt
 
 -- Tab / Indentation
-opt.tabstop = 5
-opt.shiftwidth = 5
-opt.softtabstop = 5
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
 opt.expandtab = true
 opt.smartindent = true
 opt.autoindent = true
@@ -19,7 +19,7 @@ opt.hlsearch = false
 opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
-opt.colorcolumn = "220"
+opt.colorcolumn = "240"
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 10

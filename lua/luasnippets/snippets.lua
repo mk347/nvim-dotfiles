@@ -5,12 +5,6 @@ local i = ls.insert_node
 
 ls.add_snippets("all", {
 
-  s("width", {
-    t('width="'),
-    i(1),
-    t('"'),
-  }),
-
   s("tbl center", {
     t({
       '<table align="center" cellpadding="0" cellspacing="0" border="0" width="100%">',

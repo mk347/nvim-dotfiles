@@ -56,10 +56,10 @@ keymap("t", "<C-l>", "wincmd l", opts)
 
 keymap("t", "<Leader><ESC>", "<C-\\><C-n>", opts)
 
--- keymap("<C-h>", "TmuxNavigateLeft", "n") -- Navigate Left
--- keymap("<C-j>", "TmuxNavigateDown", "n") -- Navigate Down
--- keymap("<C-k>", "TmuxNavigateUp", "n") -- Navigate Up
--- keymap("<C-l>", "TmuxNavigateRight", "n") -- Navigate Right
+keymap("n", "<C-h>", "TmuxNavigateLeft") -- Navigate Left
+keymap("n", "<C-j>", "TmuxNavigateDown") -- Navigate Down
+keymap("n", "<C-k>", "TmuxNavigateUp") -- Navigate Up
+keymap("n", "<C-l>", "TmuxNavigateRight") -- Navigate Right
 
 --Window Split Management
 keymap("n", "<leader>sv", ":vsplit<CR>", { noremap = true, silent = true, desc = "Split Vertical" }) -- Split Vertically
